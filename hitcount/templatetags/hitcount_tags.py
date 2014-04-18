@@ -168,12 +168,12 @@ class GetHitCountJavascript(template.Node):
                         object_pk=object_pk)
 
         js = "var csrf = $('input[name=csrfmiddlewaretoken]').val();" +\
- +            "\n$.post( '" + reverse('hitcount_update_ajax') + "',"   + \
- +            "\n{ csrfmiddlewaretoken: csrf, hitcount_pk : '" + str(obj.pk) + "' }," + \
- +            "\nfunction(data, status) {\n"                         + \
- +            "\tif (data.status == 'error') {\n"                  + \
- +            "\t\t// do something for error?\n"                   + \
- +            "\t}\n\t},\n'json');"
+             "\n$.post( '" + reverse('hitcount_update_ajax') + "',"   + \
+             "\n{ csrfmiddlewaretoken: csrf, hitcount_pk : '" + str(obj.pk) + "' }," + \
+             "\nfunction(data, status) {\n"                         + \
+             "\tif (data.status == 'error') {\n"                  + \
+             "\t\t// do something for error?\n"                   + \
+             "\t}\n\t},\n'json');"
  
         return js
 
