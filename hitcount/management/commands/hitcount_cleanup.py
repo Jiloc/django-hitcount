@@ -1,4 +1,5 @@
 import datetime
+from django.utils.timezone import now
 from django.core.management.base import NoArgsCommand
 
 class Command(NoArgsCommand):
@@ -9,6 +10,6 @@ class Command(NoArgsCommand):
         from hitcount.models import Hit
         from django.conf import settings
         grace = getattr(settings, 'HITCOUNT_KEEP_HIT_IN_DATABASE', {'days':30})
-        period = datetime.datetime.now() - datetime.timedelta(**grace)
+        period = now() - datetime.timedelta(**grace)
         Hit.objects.filter(created__lt=period).delete()
         transaction.commit_unless_managed()
