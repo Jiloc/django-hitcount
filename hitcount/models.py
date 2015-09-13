@@ -5,7 +5,7 @@ from django.conf import settings
 from django.db.models import F
 
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 from django.dispatch import Signal
 from django.utils.timezone import now
@@ -83,7 +83,7 @@ class HitCount(models.Model):
                         verbose_name="content type",
                         related_name="content_type_set_for_%(class)s",)
     object_pk       = models.TextField('object ID')
-    content_object  = generic.GenericForeignKey('content_type', 'object_pk')
+    content_object  = GenericForeignKey('content_type', 'object_pk')
 
     class Meta:
         ordering = ( '-hits', )
