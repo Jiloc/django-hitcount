@@ -26,7 +26,6 @@ class HitAdmin(admin.ModelAdmin):
 
     def __init__(self, *args, **kwargs):
         super(HitAdmin, self).__init__(*args, **kwargs)
-        self.list_display_links = (None,)
 
     def get_actions(self, request):
         # Override the default `get_actions` to ensure that our model's
